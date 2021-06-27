@@ -8,23 +8,23 @@ from typing import Any, Dict, List, Optional, Set
 
 from blspy import AugSchemeMPL, G2Element
 
-from flax.consensus.cost_calculator import calculate_cost_of_program, NPCResult
-from flax.full_node.bundle_tools import simple_solution_generator
-from flax.full_node.mempool_check_conditions import get_name_puzzle_conditions
-from flax.protocols.wallet_protocol import PuzzleSolutionResponse
-from flax.types.blockchain_format.coin import Coin
-from flax.types.blockchain_format.program import Program
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.types.coin_solution import CoinSolution
-from flax.types.generator_types import BlockGenerator
-from flax.types.spend_bundle import SpendBundle
-from flax.util.byte_types import hexstr_to_bytes
-from flax.util.condition_tools import conditions_dict_for_solution, pkm_pairs_for_conditions_dict
-from flax.util.ints import uint8, uint32, uint64, uint128
-from flax.util.json_util import dict_to_json_str
-from flax.wallet.block_record import HeaderBlockRecord
-from flax.wallet.cc_wallet.cc_info import CCInfo
-from flax.wallet.cc_wallet.cc_utils import (
+from greenberry.consensus.cost_calculator import calculate_cost_of_program, NPCResult
+from greenberry.full_node.bundle_tools import simple_solution_generator
+from greenberry.full_node.mempool_check_conditions import get_name_puzzle_conditions
+from greenberry.protocols.wallet_protocol import PuzzleSolutionResponse
+from greenberry.types.blockchain_format.coin import Coin
+from greenberry.types.blockchain_format.program import Program
+from greenberry.types.blockchain_format.sized_bytes import bytes32
+from greenberry.types.coin_solution import CoinSolution
+from greenberry.types.generator_types import BlockGenerator
+from greenberry.types.spend_bundle import SpendBundle
+from greenberry.util.byte_types import hexstr_to_bytes
+from greenberry.util.condition_tools import conditions_dict_for_solution, pkm_pairs_for_conditions_dict
+from greenberry.util.ints import uint8, uint32, uint64, uint128
+from greenberry.util.json_util import dict_to_json_str
+from greenberry.wallet.block_record import HeaderBlockRecord
+from greenberry.wallet.cc_wallet.cc_info import CCInfo
+from greenberry.wallet.cc_wallet.cc_utils import (
     CC_MOD,
     SpendableCC,
     cc_puzzle_for_inner_puzzle,
@@ -33,22 +33,22 @@ from flax.wallet.cc_wallet.cc_utils import (
     spend_bundle_for_spendable_ccs,
     uncurry_cc,
 )
-from flax.wallet.derivation_record import DerivationRecord
-from flax.wallet.puzzles.genesis_by_coin_id_with_0 import (
+from greenberry.wallet.derivation_record import DerivationRecord
+from greenberry.wallet.puzzles.genesis_by_coin_id_with_0 import (
     create_genesis_or_zero_coin_checker,
     genesis_coin_id_for_genesis_coin_checker,
     lineage_proof_for_genesis,
 )
-from flax.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import (
+from greenberry.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import (
     DEFAULT_HIDDEN_PUZZLE_HASH,
     calculate_synthetic_secret_key,
 )
-from flax.wallet.transaction_record import TransactionRecord
-from flax.wallet.util.transaction_type import TransactionType
-from flax.wallet.util.wallet_types import WalletType
-from flax.wallet.wallet import Wallet
-from flax.wallet.wallet_coin_record import WalletCoinRecord
-from flax.wallet.wallet_info import WalletInfo
+from greenberry.wallet.transaction_record import TransactionRecord
+from greenberry.wallet.util.transaction_type import TransactionType
+from greenberry.wallet.util.wallet_types import WalletType
+from greenberry.wallet.wallet import Wallet
+from greenberry.wallet.wallet_coin_record import WalletCoinRecord
+from greenberry.wallet.wallet_info import WalletInfo
 
 
 class CCWallet:

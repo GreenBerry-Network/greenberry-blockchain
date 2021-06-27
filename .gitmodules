@@ -1,6 +1,6 @@
-[submodule "flax-blockchain-gui"]
-	path = flax-blockchain-gui
-	url = https://github.com/Flax-Network/flax-blockchain-gui.git
+[submodule "greenberry-blockchain-gui"]
+	path = greenberry-blockchain-gui
+	url = https://github.com/GreenBerry-Network/greenberry-blockchain-gui.git
 	branch = main
 [submodule "mozilla-ca"]
 	path = mozilla-ca

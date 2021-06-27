@@ -16,24 +16,24 @@ from typing import Any, Dict, List, Optional, TextIO, Tuple, cast
 
 from websockets import ConnectionClosedOK, WebSocketException, WebSocketServerProtocol, serve
 
-from flax.cmds.init_funcs import flax_init
-from flax.daemon.windows_signal import kill
-from flax.server.server import ssl_context_for_root, ssl_context_for_server
-from flax.ssl.create_ssl import get_mozzila_ca_crt
-from flax.util.flax_logging import initialize_logging
-from flax.util.config import load_config
-from flax.util.json_util import dict_to_json_str
-from flax.util.path import mkdir
-from flax.util.service_groups import validate_service
-from flax.util.setproctitle import setproctitle
-from flax.util.ws_message import WsRpcMessage, create_payload, format_response
+from greenberry.cmds.init_funcs import greenberry_init
+from greenberry.daemon.windows_signal import kill
+from greenberry.server.server import ssl_context_for_root, ssl_context_for_server
+from greenberry.ssl.create_ssl import get_mozzila_ca_crt
+from greenberry.util.greenberry_logging import initialize_logging
+from greenberry.util.config import load_config
+from greenberry.util.json_util import dict_to_json_str
+from greenberry.util.path import mkdir
+from greenberry.util.service_groups import validate_service
+from greenberry.util.setproctitle import setproctitle
+from greenberry.util.ws_message import WsRpcMessage, create_payload, format_response
 
 io_pool_exc = ThreadPoolExecutor()
 
 try:
     from aiohttp import ClientSession, web
 except ModuleNotFoundError:
-    print("Error: Make sure to run . ./activate from the project folder before starting Flax.")
+    print("Error: Make sure to run . ./activate from the project folder before starting GreenBerry.")
     quit()
 
 try:
@@ -45,7 +45,7 @@ except ImportError:
 
 log = logging.getLogger(__name__)
 
-service_plotter = "flax plots create"
+service_plotter = "greenberry plots create"
 
 
 async def fetch(url: str):
@@ -78,15 +78,15 @@ class PlotEvent(str, Enum):
 # determine if application is a script file or frozen exe
 if getattr(sys, "frozen", False):
     name_map = {
-        "flax": "flax",
-        "flax_wallet": "start_wallet",
-        "flax_full_node": "start_full_node",
-        "flax_harvester": "start_harvester",
-        "flax_farmer": "start_farmer",
-        "flax_introducer": "start_introducer",
-        "flax_timelord": "start_timelord",
-        "flax_timelord_launcher": "timelord_launcher",
-        "flax_full_node_simulator": "start_simulator",
+        "greenberry": "greenberry",
+        "greenberry_wallet": "start_wallet",
+        "greenberry_full_node": "start_full_node",
+        "greenberry_harvester": "start_harvester",
+        "greenberry_farmer": "start_farmer",
+        "greenberry_introducer": "start_introducer",
+        "greenberry_timelord": "start_timelord",
+        "greenberry_timelord_launcher": "timelord_launcher",
+        "greenberry_full_node_simulator": "start_simulator",
     }
 
     def executable_for_service(service_name: str) -> str:
@@ -672,7 +672,7 @@ class WebSocketServer:
 
         # TODO: fix this hack
         asyncio.get_event_loop().call_later(5, lambda *args: sys.exit(0))
-        log.info("flax daemon exiting in 5 seconds")
+        log.info("greenberry daemon exiting in 5 seconds")
 
         response = {"success": True}
         return response
@@ -729,8 +729,8 @@ def plotter_log_path(root_path: Path, id: str):
 
 
 def launch_plotter(root_path: Path, service_name: str, service_array: List[str], id: str):
-    # we need to pass on the possibly altered FLAX_ROOT
-    os.environ["FLAX_ROOT"] = str(root_path)
+    # we need to pass on the possibly altered GREENBERRY_ROOT
+    os.environ["GREENBERRY_ROOT"] = str(root_path)
     service_executable = executable_for_service(service_array[0])
 
     # Swap service name with name of executable
@@ -765,14 +765,14 @@ def launch_service(root_path: Path, service_command) -> Tuple[subprocess.Popen, 
     """
     Launch a child process.
     """
-    # set up FLAX_ROOT
+    # set up GREENBERRY_ROOT
     # invoke correct script
     # save away PID
 
-    # we need to pass on the possibly altered FLAX_ROOT
-    os.environ["FLAX_ROOT"] = str(root_path)
+    # we need to pass on the possibly altered GREENBERRY_ROOT
+    os.environ["GREENBERRY_ROOT"] = str(root_path)
 
-    log.debug(f"Launching service with FLAX_ROOT: {os.environ['FLAX_ROOT']}")
+    log.debug(f"Launching service with GREENBERRY_ROOT: {os.environ['GREENBERRY_ROOT']}")
 
     lockfile = singleton(service_launch_lock_path(root_path, service_command))
     if lockfile is None:
@@ -946,9 +946,9 @@ def singleton(lockfile: Path, text: str = "semaphore") -> Optional[TextIO]:
 
 
 async def async_run_daemon(root_path: Path) -> int:
-    flax_init(root_path)
+    greenberry_init(root_path)
     config = load_config(root_path, "config.yaml")
-    setproctitle("flax_daemon")
+    setproctitle("greenberry_daemon")
     initialize_logging("daemon", config["logging"], root_path)
     lockfile = singleton(daemon_launch_lock_path(root_path))
     crt_path = root_path / config["daemon_ssl"]["private_crt"]
@@ -986,7 +986,7 @@ def run_daemon(root_path: Path) -> int:
 
 
 def main() -> int:
-    from flax.util.default_root import DEFAULT_ROOT_PATH
+    from greenberry.util.default_root import DEFAULT_ROOT_PATH
 
     return run_daemon(DEFAULT_ROOT_PATH)
 

@@ -3,9 +3,9 @@ from typing import List
 
 from blspy import AugSchemeMPL
 
-from flax.util.ints import uint32
-from flax.util.keychain import Keychain
-from flax.util.validate_alert import create_alert_file, create_not_ready_alert_file, validate_alert_file
+from greenberry.util.ints import uint32
+from greenberry.util.keychain import Keychain
+from greenberry.util.validate_alert import create_alert_file, create_not_ready_alert_file, validate_alert_file
 
 bitcoin_hash = None
 bram_message = None

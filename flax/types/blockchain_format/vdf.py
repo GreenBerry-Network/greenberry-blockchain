@@ -7,11 +7,11 @@ from functools import lru_cache
 
 from chiavdf import create_discriminant, verify_n_wesolowski
 
-from flax.consensus.constants import ConsensusConstants
-from flax.types.blockchain_format.classgroup import ClassgroupElement
-from flax.types.blockchain_format.sized_bytes import bytes32, bytes100
-from flax.util.ints import uint8, uint64
-from flax.util.streamable import Streamable, streamable
+from greenberry.consensus.constants import ConsensusConstants
+from greenberry.types.blockchain_format.classgroup import ClassgroupElement
+from greenberry.types.blockchain_format.sized_bytes import bytes32, bytes100
+from greenberry.util.ints import uint8, uint64
+from greenberry.util.streamable import Streamable, streamable
 
 log = logging.getLogger(__name__)
 

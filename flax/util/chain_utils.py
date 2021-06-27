@@ -1,9 +1,9 @@
 from typing import List
 
-from flax.types.blockchain_format.coin import Coin
-from flax.types.blockchain_format.program import SerializedProgram
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.util.condition_tools import (
+from greenberry.types.blockchain_format.coin import Coin
+from greenberry.types.blockchain_format.program import SerializedProgram
+from greenberry.types.blockchain_format.sized_bytes import bytes32
+from greenberry.util.condition_tools import (
     conditions_dict_for_solution,
     created_outputs_for_conditions_dict,
 )

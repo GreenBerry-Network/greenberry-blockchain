@@ -3,16 +3,16 @@ from typing import Callable, Optional
 
 from blspy import AugSchemeMPL, G2Element
 
-import flax.server.ws_connection as ws
-from flax.consensus.pot_iterations import calculate_iterations_quality, calculate_sp_interval_iters
-from flax.farmer.farmer import Farmer
-from flax.protocols import farmer_protocol, harvester_protocol
-from flax.protocols.protocol_message_types import ProtocolMessageTypes
-from flax.server.outbound_message import NodeType, make_msg
-from flax.types.blockchain_format.pool_target import PoolTarget
-from flax.types.blockchain_format.proof_of_space import ProofOfSpace
-from flax.util.api_decorators import api_request, peer_required
-from flax.util.ints import uint32, uint64
+import greenberry.server.ws_connection as ws
+from greenberry.consensus.pot_iterations import calculate_iterations_quality, calculate_sp_interval_iters
+from greenberry.farmer.farmer import Farmer
+from greenberry.protocols import farmer_protocol, harvester_protocol
+from greenberry.protocols.protocol_message_types import ProtocolMessageTypes
+from greenberry.server.outbound_message import NodeType, make_msg
+from greenberry.types.blockchain_format.pool_target import PoolTarget
+from greenberry.types.blockchain_format.proof_of_space import ProofOfSpace
+from greenberry.util.api_decorators import api_request, peer_required
+from greenberry.util.ints import uint32, uint64
 
 
 class FarmerAPI:
@@ -27,7 +27,7 @@ class FarmerAPI:
     @api_request
     @peer_required
     async def new_proof_of_space(
-        self, new_proof_of_space: harvester_protocol.NewProofOfSpace, peer: ws.WSFlaxConnection
+        self, new_proof_of_space: harvester_protocol.NewProofOfSpace, peer: ws.WSGreenBerryConnection
     ):
         """
         This is a response from the harvester, for a NewChallenge. Here we check if the proof

@@ -7,13 +7,13 @@ from typing import Callable, Dict, List, Optional, Set, Tuple
 
 from blspy import G1Element
 
-import flax.server.ws_connection as ws  # lgtm [py/import-and-import-from]
-from flax.consensus.constants import ConsensusConstants
-from flax.plotting.plot_tools import PlotInfo
-from flax.plotting.plot_tools import add_plot_directory as add_plot_directory_pt
-from flax.plotting.plot_tools import get_plot_directories as get_plot_directories_pt
-from flax.plotting.plot_tools import load_plots
-from flax.plotting.plot_tools import remove_plot_directory as remove_plot_directory_pt
+import greenberry.server.ws_connection as ws  # lgtm [py/import-and-import-from]
+from greenberry.consensus.constants import ConsensusConstants
+from greenberry.plotting.plot_tools import PlotInfo
+from greenberry.plotting.plot_tools import add_plot_directory as add_plot_directory_pt
+from greenberry.plotting.plot_tools import get_plot_directories as get_plot_directories_pt
+from greenberry.plotting.plot_tools import load_plots
+from greenberry.plotting.plot_tools import remove_plot_directory as remove_plot_directory_pt
 
 log = logging.getLogger(__name__)
 
@@ -72,7 +72,7 @@ class Harvester:
         if self.state_changed_callback is not None:
             self.state_changed_callback(change)
 
-    def on_disconnect(self, connection: ws.WSFlaxConnection):
+    def on_disconnect(self, connection: ws.WSGreenBerryConnection):
         self.log.info(f"peer disconnected {connection.get_peer_info()}")
         self._state_changed("close_connection")
 

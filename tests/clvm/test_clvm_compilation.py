@@ -3,43 +3,43 @@ from unittest import TestCase
 
 from clvm_tools.clvmc import compile_clvm
 
-from flax.types.blockchain_format.program import Program, SerializedProgram
+from greenberry.types.blockchain_format.program import Program, SerializedProgram
 
 wallet_program_files = set(
     [
-        "flax/wallet/puzzles/calculate_synthetic_public_key.clvm",
-        "flax/wallet/puzzles/cc.clvm",
-        "flax/wallet/puzzles/flaxlisp_deserialisation.clvm",
-        "flax/wallet/puzzles/rom_bootstrap_generator.clvm",
-        "flax/wallet/puzzles/generator_for_single_coin.clvm",
-        "flax/wallet/puzzles/genesis-by-coin-id-with-0.clvm",
-        "flax/wallet/puzzles/genesis-by-puzzle-hash-with-0.clvm",
-        "flax/wallet/puzzles/lock.inner.puzzle.clvm",
-        "flax/wallet/puzzles/p2_conditions.clvm",
-        "flax/wallet/puzzles/p2_delegated_conditions.clvm",
-        "flax/wallet/puzzles/p2_delegated_puzzle.clvm",
-        "flax/wallet/puzzles/p2_delegated_puzzle_or_hidden_puzzle.clvm",
-        "flax/wallet/puzzles/p2_m_of_n_delegate_direct.clvm",
-        "flax/wallet/puzzles/p2_puzzle_hash.clvm",
-        "flax/wallet/puzzles/rl_aggregation.clvm",
-        "flax/wallet/puzzles/rl.clvm",
-        "flax/wallet/puzzles/sha256tree_module.clvm",
-        "flax/wallet/puzzles/singleton_top_layer.clvm",
-        "flax/wallet/puzzles/did_innerpuz.clvm",
-        "flax/wallet/puzzles/decompress_puzzle.clvm",
-        "flax/wallet/puzzles/decompress_coin_solution_entry_with_prefix.clvm",
-        "flax/wallet/puzzles/decompress_coin_solution_entry.clvm",
-        "flax/wallet/puzzles/block_program_zero.clvm",
-        "flax/wallet/puzzles/test_generator_deserialize.clvm",
-        "flax/wallet/puzzles/test_multiple_generator_input_arguments.clvm",
+        "greenberry/wallet/puzzles/calculate_synthetic_public_key.clvm",
+        "greenberry/wallet/puzzles/cc.clvm",
+        "greenberry/wallet/puzzles/greenberrylisp_deserialisation.clvm",
+        "greenberry/wallet/puzzles/rom_bootstrap_generator.clvm",
+        "greenberry/wallet/puzzles/generator_for_single_coin.clvm",
+        "greenberry/wallet/puzzles/genesis-by-coin-id-with-0.clvm",
+        "greenberry/wallet/puzzles/genesis-by-puzzle-hash-with-0.clvm",
+        "greenberry/wallet/puzzles/lock.inner.puzzle.clvm",
+        "greenberry/wallet/puzzles/p2_conditions.clvm",
+        "greenberry/wallet/puzzles/p2_delegated_conditions.clvm",
+        "greenberry/wallet/puzzles/p2_delegated_puzzle.clvm",
+        "greenberry/wallet/puzzles/p2_delegated_puzzle_or_hidden_puzzle.clvm",
+        "greenberry/wallet/puzzles/p2_m_of_n_delegate_direct.clvm",
+        "greenberry/wallet/puzzles/p2_puzzle_hash.clvm",
+        "greenberry/wallet/puzzles/rl_aggregation.clvm",
+        "greenberry/wallet/puzzles/rl.clvm",
+        "greenberry/wallet/puzzles/sha256tree_module.clvm",
+        "greenberry/wallet/puzzles/singleton_top_layer.clvm",
+        "greenberry/wallet/puzzles/did_innerpuz.clvm",
+        "greenberry/wallet/puzzles/decompress_puzzle.clvm",
+        "greenberry/wallet/puzzles/decompress_coin_solution_entry_with_prefix.clvm",
+        "greenberry/wallet/puzzles/decompress_coin_solution_entry.clvm",
+        "greenberry/wallet/puzzles/block_program_zero.clvm",
+        "greenberry/wallet/puzzles/test_generator_deserialize.clvm",
+        "greenberry/wallet/puzzles/test_multiple_generator_input_arguments.clvm",
     ]
 )
 
 clvm_include_files = set(
-    ["flax/wallet/puzzles/create-lock-puzzlehash.clvm", "flax/wallet/puzzles/condition_codes.clvm"]
+    ["greenberry/wallet/puzzles/create-lock-puzzlehash.clvm", "greenberry/wallet/puzzles/condition_codes.clvm"]
 )
 
-CLVM_PROGRAM_ROOT = "flax/wallet/puzzles"
+CLVM_PROGRAM_ROOT = "greenberry/wallet/puzzles"
 
 
 def list_files(dir, glob):
@@ -66,7 +66,7 @@ class TestClvmCompilation(TestCase):
 
     def test_all_programs_listed(self):
         """
-        Checks to see if a new .clvm file was added to flax/wallet/puzzles, but not added to `wallet_program_files`
+        Checks to see if a new .clvm file was added to greenberry/wallet/puzzles, but not added to `wallet_program_files`
         """
         existing_files = list_files(CLVM_PROGRAM_ROOT, "*.clvm")
         existing_file_paths = set([Path(x).relative_to(CLVM_PROGRAM_ROOT) for x in existing_files])

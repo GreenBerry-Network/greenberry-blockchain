@@ -1,7 +1,7 @@
-from flax.types.blockchain_format.coin import Coin
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.util.ints import uint64
-from flax.util.hash import std_hash
+from greenberry.types.blockchain_format.coin import Coin
+from greenberry.types.blockchain_format.sized_bytes import bytes32
+from greenberry.util.ints import uint64
+from greenberry.util.hash import std_hash
 import io
 
 

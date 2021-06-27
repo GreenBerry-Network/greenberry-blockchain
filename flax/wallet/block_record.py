@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 from typing import List
 
-from flax.types.blockchain_format.coin import Coin
-from flax.types.header_block import HeaderBlock
-from flax.util.streamable import Streamable, streamable
+from greenberry.types.blockchain_format.coin import Coin
+from greenberry.types.header_block import HeaderBlock
+from greenberry.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

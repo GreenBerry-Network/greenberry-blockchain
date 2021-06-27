@@ -1,6 +1,6 @@
 import pytest
 
-from flax.wallet.flaxlisp import (
+from greenberry.wallet.greenberrylisp import (
     apply,
     args,
     cons,
@@ -17,7 +17,7 @@ from flax.wallet.flaxlisp import (
 )
 
 
-class TestFlaxlisp:
+class TestGreenBerrylisp:
     def test_sexp(self):
         assert sexp() == "()"
         assert sexp(1) == "(1)"

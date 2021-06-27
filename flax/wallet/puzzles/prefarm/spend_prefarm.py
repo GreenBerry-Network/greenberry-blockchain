@@ -3,15 +3,15 @@ import asyncio
 from blspy import G2Element
 from clvm_tools import binutils
 
-from flax.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
-from flax.rpc.full_node_rpc_client import FullNodeRpcClient
-from flax.types.blockchain_format.program import Program
-from flax.types.coin_solution import CoinSolution
-from flax.types.spend_bundle import SpendBundle
-from flax.util.bech32m import decode_puzzle_hash
-from flax.util.config import load_config
-from flax.util.default_root import DEFAULT_ROOT_PATH
-from flax.util.ints import uint32, uint16
+from greenberry.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from greenberry.rpc.full_node_rpc_client import FullNodeRpcClient
+from greenberry.types.blockchain_format.program import Program
+from greenberry.types.coin_solution import CoinSolution
+from greenberry.types.spend_bundle import SpendBundle
+from greenberry.util.bech32m import decode_puzzle_hash
+from greenberry.util.config import load_config
+from greenberry.util.default_root import DEFAULT_ROOT_PATH
+from greenberry.util.ints import uint32, uint16
 
 
 async def main() -> None:

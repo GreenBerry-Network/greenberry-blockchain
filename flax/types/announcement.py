@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.util.hash import std_hash
+from greenberry.types.blockchain_format.sized_bytes import bytes32
+from greenberry.util.hash import std_hash
 
 
 @dataclass(frozen=True)

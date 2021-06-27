@@ -13,60 +13,60 @@ from typing import Callable, Dict, List, Optional, Tuple
 
 from blspy import AugSchemeMPL, G1Element, G2Element, PrivateKey
 
-from flax.cmds.init_funcs import create_all_ssl, create_default_flax_config
-from flax.full_node.bundle_tools import (
+from greenberry.cmds.init_funcs import create_all_ssl, create_default_greenberry_config
+from greenberry.full_node.bundle_tools import (
     best_solution_generator_from_template,
     detect_potential_template_generator,
     simple_solution_generator,
 )
-from flax.plotting.create_plots import create_plots
-from flax.consensus.block_creation import create_unfinished_block, unfinished_block_to_full_block
-from flax.consensus.block_record import BlockRecord
-from flax.consensus.blockchain_interface import BlockchainInterface
-from flax.consensus.coinbase import create_puzzlehash_for_pk
-from flax.consensus.constants import ConsensusConstants
-from flax.consensus.default_constants import DEFAULT_CONSTANTS
-from flax.consensus.deficit import calculate_deficit
-from flax.consensus.full_block_to_block_record import block_to_block_record
-from flax.consensus.make_sub_epoch_summary import next_sub_epoch_summary
-from flax.consensus.pot_iterations import (
+from greenberry.plotting.create_plots import create_plots
+from greenberry.consensus.block_creation import create_unfinished_block, unfinished_block_to_full_block
+from greenberry.consensus.block_record import BlockRecord
+from greenberry.consensus.blockchain_interface import BlockchainInterface
+from greenberry.consensus.coinbase import create_puzzlehash_for_pk
+from greenberry.consensus.constants import ConsensusConstants
+from greenberry.consensus.default_constants import DEFAULT_CONSTANTS
+from greenberry.consensus.deficit import calculate_deficit
+from greenberry.consensus.full_block_to_block_record import block_to_block_record
+from greenberry.consensus.make_sub_epoch_summary import next_sub_epoch_summary
+from greenberry.consensus.pot_iterations import (
     calculate_ip_iters,
     calculate_iterations_quality,
     calculate_sp_interval_iters,
     calculate_sp_iters,
     is_overflow_block,
 )
-from flax.consensus.vdf_info_computation import get_signage_point_vdf_info
-from flax.full_node.signage_point import SignagePoint
-from flax.plotting.plot_tools import PlotInfo, load_plots, parse_plot_info
-from flax.types.blockchain_format.classgroup import ClassgroupElement
-from flax.types.blockchain_format.coin import Coin
-from flax.types.blockchain_format.pool_target import PoolTarget
-from flax.types.blockchain_format.proof_of_space import ProofOfSpace
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.types.blockchain_format.slots import (
+from greenberry.consensus.vdf_info_computation import get_signage_point_vdf_info
+from greenberry.full_node.signage_point import SignagePoint
+from greenberry.plotting.plot_tools import PlotInfo, load_plots, parse_plot_info
+from greenberry.types.blockchain_format.classgroup import ClassgroupElement
+from greenberry.types.blockchain_format.coin import Coin
+from greenberry.types.blockchain_format.pool_target import PoolTarget
+from greenberry.types.blockchain_format.proof_of_space import ProofOfSpace
+from greenberry.types.blockchain_format.sized_bytes import bytes32
+from greenberry.types.blockchain_format.slots import (
     ChallengeChainSubSlot,
     InfusedChallengeChainSubSlot,
     RewardChainSubSlot,
     SubSlotProofs,
 )
-from flax.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from flax.types.blockchain_format.vdf import VDFInfo, VDFProof
-from flax.types.end_of_slot_bundle import EndOfSubSlotBundle
-from flax.types.full_block import FullBlock
-from flax.types.generator_types import BlockGenerator, CompressorArg
-from flax.types.spend_bundle import SpendBundle
-from flax.types.unfinished_block import UnfinishedBlock
-from flax.util.bech32m import encode_puzzle_hash
-from flax.util.block_cache import BlockCache
-from flax.util.config import load_config, save_config
-from flax.util.hash import std_hash
-from flax.util.ints import uint8, uint32, uint64, uint128
-from flax.util.keychain import Keychain, bytes_to_mnemonic
-from flax.util.path import mkdir
-from flax.util.vdf_prover import get_vdf_info_and_proof
-from flax.util.wallet_tools import WalletTool
-from flax.wallet.derive_keys import (
+from greenberry.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from greenberry.types.blockchain_format.vdf import VDFInfo, VDFProof
+from greenberry.types.end_of_slot_bundle import EndOfSubSlotBundle
+from greenberry.types.full_block import FullBlock
+from greenberry.types.generator_types import BlockGenerator, CompressorArg
+from greenberry.types.spend_bundle import SpendBundle
+from greenberry.types.unfinished_block import UnfinishedBlock
+from greenberry.util.bech32m import encode_puzzle_hash
+from greenberry.util.block_cache import BlockCache
+from greenberry.util.config import load_config, save_config
+from greenberry.util.hash import std_hash
+from greenberry.util.ints import uint8, uint32, uint64, uint128
+from greenberry.util.keychain import Keychain, bytes_to_mnemonic
+from greenberry.util.path import mkdir
+from greenberry.util.vdf_prover import get_vdf_info_and_proof
+from greenberry.util.wallet_tools import WalletTool
+from greenberry.wallet.derive_keys import (
     master_sk_to_farmer_sk,
     master_sk_to_local_sk,
     master_sk_to_pool_sk,
@@ -118,7 +118,7 @@ class BlockTools:
             root_path = Path(self._tempdir.name)
 
         self.root_path = root_path
-        create_default_flax_config(root_path)
+        create_default_greenberry_config(root_path)
         self.keychain = Keychain("testing-1.8.0", True)
         self.keychain.delete_all_keys()
         self.farmer_master_sk_entropy = std_hash(b"block_tools farmer key")
@@ -142,7 +142,7 @@ class BlockTools:
 
         farmer_pubkeys: List[G1Element] = [master_sk_to_farmer_sk(sk).get_g1() for sk in self.all_sks]
         if len(self.pool_pubkeys) == 0 or len(farmer_pubkeys) == 0:
-            raise RuntimeError("Keys not generated. Run `flax generate keys`")
+            raise RuntimeError("Keys not generated. Run `greenberry generate keys`")
 
         _, loaded_plots, _, _ = load_plots({}, {}, farmer_pubkeys, self.pool_pubkeys, None, False, root_path)
         self.plots: Dict[Path, PlotInfo] = loaded_plots
@@ -1180,7 +1180,7 @@ def get_challenges(
 
 
 def get_plot_dir() -> Path:
-    cache_path = Path(os.path.expanduser(os.getenv("FLAX_ROOT", "~/.flax/"))) / "test-plots"
+    cache_path = Path(os.path.expanduser(os.getenv("GREENBERRY_ROOT", "~/.greenberry/"))) / "test-plots"
     mkdir(cache_path)
     return cache_path
 

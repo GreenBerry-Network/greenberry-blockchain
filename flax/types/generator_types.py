@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from typing import List
-from flax.types.blockchain_format.program import SerializedProgram
-from flax.util.ints import uint32
-from flax.util.streamable import Streamable, streamable
+from greenberry.types.blockchain_format.program import SerializedProgram
+from greenberry.util.ints import uint32
+from greenberry.util.streamable import Streamable, streamable
 
 
 class GeneratorBlockCacheInterface:

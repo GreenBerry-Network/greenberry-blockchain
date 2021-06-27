@@ -1,12 +1,12 @@
 from dataclasses import dataclass
 from typing import List, Optional, Tuple
 
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.util.ints import uint64
-from flax.util.streamable import streamable, Streamable
-from flax.wallet.cc_wallet.ccparent import CCParent
-from flax.types.blockchain_format.program import Program
-from flax.types.blockchain_format.coin import Coin
+from greenberry.types.blockchain_format.sized_bytes import bytes32
+from greenberry.util.ints import uint64
+from greenberry.util.streamable import streamable, Streamable
+from greenberry.wallet.cc_wallet.ccparent import CCParent
+from greenberry.types.blockchain_format.program import Program
+from greenberry.types.blockchain_format.coin import Coin
 
 
 @dataclass(frozen=True)

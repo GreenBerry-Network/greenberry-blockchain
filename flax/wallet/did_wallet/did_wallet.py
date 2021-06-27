@@ -6,28 +6,28 @@ from typing import Dict, Optional, List, Any, Set, Tuple, Union
 
 from blspy import AugSchemeMPL, G1Element
 from secrets import token_bytes
-from flax.protocols import wallet_protocol
-from flax.protocols.wallet_protocol import RespondAdditions, RejectAdditionsRequest
-from flax.server.outbound_message import NodeType
-from flax.types.blockchain_format.coin import Coin
-from flax.types.coin_solution import CoinSolution
+from greenberry.protocols import wallet_protocol
+from greenberry.protocols.wallet_protocol import RespondAdditions, RejectAdditionsRequest
+from greenberry.server.outbound_message import NodeType
+from greenberry.types.blockchain_format.coin import Coin
+from greenberry.types.coin_solution import CoinSolution
 
-from flax.types.blockchain_format.program import Program
-from flax.types.spend_bundle import SpendBundle
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.wallet.util.transaction_type import TransactionType
-from flax.util.ints import uint64, uint32, uint8
+from greenberry.types.blockchain_format.program import Program
+from greenberry.types.spend_bundle import SpendBundle
+from greenberry.types.blockchain_format.sized_bytes import bytes32
+from greenberry.wallet.util.transaction_type import TransactionType
+from greenberry.util.ints import uint64, uint32, uint8
 
-from flax.wallet.did_wallet.did_info import DIDInfo
-from flax.wallet.cc_wallet.ccparent import CCParent
-from flax.wallet.transaction_record import TransactionRecord
-from flax.wallet.util.wallet_types import WalletType
-from flax.wallet.wallet import Wallet
-from flax.wallet.wallet_coin_record import WalletCoinRecord
-from flax.wallet.wallet_info import WalletInfo
-from flax.wallet.derivation_record import DerivationRecord
-from flax.wallet.did_wallet import did_wallet_puzzles
-from flax.wallet.derive_keys import master_sk_to_wallet_sk
+from greenberry.wallet.did_wallet.did_info import DIDInfo
+from greenberry.wallet.cc_wallet.ccparent import CCParent
+from greenberry.wallet.transaction_record import TransactionRecord
+from greenberry.wallet.util.wallet_types import WalletType
+from greenberry.wallet.wallet import Wallet
+from greenberry.wallet.wallet_coin_record import WalletCoinRecord
+from greenberry.wallet.wallet_info import WalletInfo
+from greenberry.wallet.derivation_record import DerivationRecord
+from greenberry.wallet.did_wallet import did_wallet_puzzles
+from greenberry.wallet.derive_keys import master_sk_to_wallet_sk
 
 
 class DIDWallet:

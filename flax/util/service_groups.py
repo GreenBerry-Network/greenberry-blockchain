@@ -1,19 +1,19 @@
 from typing import KeysView, Generator
 
 SERVICES_FOR_GROUP = {
-    "all": "flax_harvester flax_timelord_launcher flax_timelord flax_farmer flax_full_node flax_wallet".split(),
-    "node": "flax_full_node".split(),
-    "harvester": "flax_harvester".split(),
-    "farmer": "flax_harvester flax_farmer flax_full_node flax_wallet".split(),
-    "farmer-no-wallet": "flax_harvester flax_farmer flax_full_node".split(),
-    "farmer-only": "flax_farmer".split(),
-    "timelord": "flax_timelord_launcher flax_timelord flax_full_node".split(),
-    "timelord-only": "flax_timelord".split(),
-    "timelord-launcher-only": "flax_timelord_launcher".split(),
-    "wallet": "flax_wallet flax_full_node".split(),
-    "wallet-only": "flax_wallet".split(),
-    "introducer": "flax_introducer".split(),
-    "simulator": "flax_full_node_simulator".split(),
+    "all": "greenberry_harvester greenberry_timelord_launcher greenberry_timelord greenberry_farmer greenberry_full_node greenberry_wallet".split(),
+    "node": "greenberry_full_node".split(),
+    "harvester": "greenberry_harvester".split(),
+    "farmer": "greenberry_harvester greenberry_farmer greenberry_full_node greenberry_wallet".split(),
+    "farmer-no-wallet": "greenberry_harvester greenberry_farmer greenberry_full_node".split(),
+    "farmer-only": "greenberry_farmer".split(),
+    "timelord": "greenberry_timelord_launcher greenberry_timelord greenberry_full_node".split(),
+    "timelord-only": "greenberry_timelord".split(),
+    "timelord-launcher-only": "greenberry_timelord_launcher".split(),
+    "wallet": "greenberry_wallet greenberry_full_node".split(),
+    "wallet-only": "greenberry_wallet".split(),
+    "introducer": "greenberry_introducer".split(),
+    "simulator": "greenberry_full_node_simulator".split(),
 }
 
 

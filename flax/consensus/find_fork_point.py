@@ -1,8 +1,8 @@
 from typing import Union
 
-from flax.consensus.block_record import BlockRecord
-from flax.consensus.blockchain_interface import BlockchainInterface
-from flax.types.header_block import HeaderBlock
+from greenberry.consensus.block_record import BlockRecord
+from greenberry.consensus.blockchain_interface import BlockchainInterface
+from greenberry.types.header_block import HeaderBlock
 
 
 def find_fork_point_in_chain(

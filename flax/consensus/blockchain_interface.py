@@ -1,12 +1,12 @@
 from typing import Dict, List, Optional
 
-from flax.consensus.block_record import BlockRecord
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from flax.types.blockchain_format.vdf import VDFInfo
-from flax.types.header_block import HeaderBlock
-from flax.types.weight_proof import SubEpochChallengeSegment
-from flax.util.ints import uint32
+from greenberry.consensus.block_record import BlockRecord
+from greenberry.types.blockchain_format.sized_bytes import bytes32
+from greenberry.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from greenberry.types.blockchain_format.vdf import VDFInfo
+from greenberry.types.header_block import HeaderBlock
+from greenberry.types.weight_proof import SubEpochChallengeSegment
+from greenberry.util.ints import uint32
 
 
 class BlockchainInterface:

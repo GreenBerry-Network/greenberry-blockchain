@@ -65,9 +65,9 @@ CHECKOUT_TEST_BLOCKS_AND_PLOTS
     - name: Link home directory
       run: |
         cd $HOME
-        ln -s $GITHUB_WORKSPACE/.flax
-        echo "$HOME/.flax"
-        ls -al $HOME/.flax
+        ln -s $GITHUB_WORKSPACE/.greenberry
+        echo "$HOME/.greenberry"
+        ls -al $HOME/.greenberry
 
     - name: Install ubuntu dependencies
       run: |

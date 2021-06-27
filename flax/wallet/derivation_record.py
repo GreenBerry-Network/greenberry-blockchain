@@ -2,9 +2,9 @@ from dataclasses import dataclass
 
 from blspy import G1Element
 
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.util.ints import uint32
-from flax.wallet.util.wallet_types import WalletType
+from greenberry.types.blockchain_format.sized_bytes import bytes32
+from greenberry.util.ints import uint32
+from greenberry.wallet.util.wallet_types import WalletType
 
 
 @dataclass(frozen=True)

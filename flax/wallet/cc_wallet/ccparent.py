@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.util.ints import uint64
-from flax.util.streamable import Streamable, streamable
+from greenberry.types.blockchain_format.sized_bytes import bytes32
+from greenberry.util.ints import uint64
+from greenberry.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

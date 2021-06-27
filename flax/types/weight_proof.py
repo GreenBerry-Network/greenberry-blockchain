@@ -1,14 +1,14 @@
 from dataclasses import dataclass
 from typing import List, Optional
 
-from flax.types.blockchain_format.proof_of_space import ProofOfSpace
-from flax.types.blockchain_format.reward_chain_block import RewardChainBlock
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.types.blockchain_format.vdf import VDFInfo, VDFProof
-from flax.types.end_of_slot_bundle import EndOfSubSlotBundle
-from flax.types.header_block import HeaderBlock
-from flax.util.ints import uint8, uint32, uint64, uint128
-from flax.util.streamable import Streamable, streamable
+from greenberry.types.blockchain_format.proof_of_space import ProofOfSpace
+from greenberry.types.blockchain_format.reward_chain_block import RewardChainBlock
+from greenberry.types.blockchain_format.sized_bytes import bytes32
+from greenberry.types.blockchain_format.vdf import VDFInfo, VDFProof
+from greenberry.types.end_of_slot_bundle import EndOfSubSlotBundle
+from greenberry.types.header_block import HeaderBlock
+from greenberry.util.ints import uint8, uint32, uint64, uint128
+from greenberry.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

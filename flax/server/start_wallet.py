@@ -2,20 +2,20 @@ import pathlib
 from multiprocessing import freeze_support
 from typing import Dict
 
-from flax.consensus.constants import ConsensusConstants
-from flax.consensus.default_constants import DEFAULT_CONSTANTS
-from flax.rpc.wallet_rpc_api import WalletRpcApi
-from flax.server.outbound_message import NodeType
-from flax.server.start_service import run_service
-from flax.types.peer_info import PeerInfo
-from flax.util.block_tools import test_constants
-from flax.util.config import load_config_cli, load_config
-from flax.util.default_root import DEFAULT_ROOT_PATH
-from flax.util.keychain import Keychain
-from flax.wallet.wallet_node import WalletNode
+from greenberry.consensus.constants import ConsensusConstants
+from greenberry.consensus.default_constants import DEFAULT_CONSTANTS
+from greenberry.rpc.wallet_rpc_api import WalletRpcApi
+from greenberry.server.outbound_message import NodeType
+from greenberry.server.start_service import run_service
+from greenberry.types.peer_info import PeerInfo
+from greenberry.util.block_tools import test_constants
+from greenberry.util.config import load_config_cli, load_config
+from greenberry.util.default_root import DEFAULT_ROOT_PATH
+from greenberry.util.keychain import Keychain
+from greenberry.wallet.wallet_node import WalletNode
 
 # See: https://bugs.python.org/issue29288
-from flax.wallet.wallet_node_api import WalletNodeAPI
+from greenberry.wallet.wallet_node_api import WalletNodeAPI
 
 "".encode("idna")
 
